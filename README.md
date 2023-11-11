@@ -49,8 +49,7 @@ Na aplicação, há apenas três rotas a serem trabalhadas, sendo elas:
 * O uso de ferramentas de IA como GitHub Copilot e ChatGPT é permitido (*inclusive, incentivado*) mas espera-se que o candidato tenha entendimento do código gerado e saiba explicá-lo, se perguntado.
 
 # Submissão
-* Faça uma cópia do repositório, torne-o privado e adicione os usuários **@terra-q** e **@abreufilho** como colaboradores usando o link abaixo:
-  * >https://github.com/SEU_USUARIO/frontend-test-nov-2023/settings/access
+* Faça uma cópia do repositório acessando o [link](https://github.com/new?template_name=frontend-test-nov-2023&template_owner=terra-q), torne-o privado e adicione os usuários **@terra-q** e **@abreufilho** como colaboradores.
 * Faça as alterações de modo a cumprir as tarefas deste teste, dê os commits necessários e o push final para o seu repositório remoto no GitHub, lembrando de fazê-lo antes do prazo final (13/11/2023 11:30h).
 * Lembre-se de utilizar sua conta real do GitHub;
 * O tempo de entrega *NÃO* está sendo avaliado, mas envios após a data e hora limite serão desconsiderados.
