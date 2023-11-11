@@ -82,6 +82,5 @@ onMounted(() => {
 </script>
 
 <template>
-    {{  rasters }}
     <div id="map" class="z-[5] h-[calc(100vh)] max-h-[calc(100vh)]"></div>
 </template>
