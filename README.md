@@ -22,14 +22,14 @@ Na aplicação, há apenas três rotas a serem trabalhadas, sendo elas:
 
 # Avaliação
 ## Lista de tarefas a serem cumpridas
-- [ ] Altere o layout da página inicial na rota "/" para exibir apenas dois cartões, onde ambos devem levar para as 2 rotas de: "/mapa" e "/grafico".
-- [ ] Na rota "/mapa", alterar o estilo do componente de coordenadas do mouse para que ele fique fixo no canto inferior esquerdo da tela (levando a barra de escala para a direita) e que ele fique com uma fonte maior, contendo um fundo branco com opacidade de 0.5.
-- [ ] Na rota "/mapa", alterar o estilo do componente de context menu (popup) de modo que ele tenha um maior espaçamento entre as coordenadas de latitude e longitude.
-- [ ] Na rota "/mapa", alterar o texto do componente de context menu (popup) de modo que além da latitude e longitude, ele também exiba a data/hora em que o usuário clicou com o botão direito no mapa. Formato: "DD/MM/YYYY HH:mm:ss". (Opcional: adicionar um ícone de calendário ao lado da data/hora).
-- [ ] Na rota "/mapa", adicione um botão flutuante no topo, à esquerda da tela, com um ícone de "zoom in" que você preferir, e que ao ser clicado, deve executar a função ZoomInOut('in') que já existe no código fornecido. Faça um ícone logo abaixo que faça a função ZoomInOut('out') ao ser clicado.
-- [ ] Na rota "/grafico", adicione um gráfico do ChartJS da forma que achar mais adequada, desde que contenha os dados de temperatura e precipitação. (Opcional: adicionar um botão para alternar entre os datasets de temperatura e precipitação ou visualizar ambos datasets ao mesmo tempo).
+- [X] Altere o layout da página inicial na rota "/" para exibir apenas dois cartões, onde ambos devem levar para as 2 rotas de: "/mapa" e "/grafico".
+- [X] Na rota "/mapa", alterar o estilo do componente de coordenadas do mouse para que ele fique fixo no canto inferior esquerdo da tela (levando a barra de escala para a direita) e que ele fique com uma fonte maior, contendo um fundo branco com opacidade de 0.5.
+- [X] Na rota "/mapa", alterar o estilo do componente de context menu (popup) de modo que ele tenha um maior espaçamento entre as coordenadas de latitude e longitude.
+- [X] Na rota "/mapa", alterar o texto do componente de context menu (popup) de modo que além da latitude e longitude, ele também exiba a data/hora em que o usuário clicou com o botão direito no mapa. Formato: "DD/MM/YYYY HH:mm:ss". (Opcional: adicionar um ícone de calendário ao lado da data/hora).
+- [X] Na rota "/mapa", adicione um botão flutuante no topo, à esquerda da tela, com um ícone de "zoom in" que você preferir, e que ao ser clicado, deve executar a função ZoomInOut('in') que já existe no código fornecido. Faça um ícone logo abaixo que faça a função ZoomInOut('out') ao ser clicado.
+- [X] Na rota "/grafico", adicione um gráfico do ChartJS da forma que achar mais adequada, desde que contenha os dados de temperatura e precipitação. (Opcional: adicionar um botão para alternar entre os datasets de temperatura e precipitação ou visualizar ambos datasets ao mesmo tempo).
 - [ ] Adicionar documentação com as melhores práticas às funções originais do repositório que não tiverem nenhum tipo de docstring.
-- [ ] Comentários explicando novas funcionalidades desenvolvidas
+- [X] Comentários explicando novas funcionalidades desenvolvidas
 - [ ] Crie um botão que altere o mapa de fundo, utilizando a função já existente "ToggleRaster" da forma que achar mais adequado. Ao clicar neste botão, a imagem de satélite (Google Satélite) deve ser alterada para a imagem de mapa de ruas (OpenStreetMap) e vice-versa (As informações para fazer esta alteração estão no arquivo de rotas web.php).
 
 ## Critérios avaliados
