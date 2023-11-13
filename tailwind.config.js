@@ -15,6 +15,13 @@ module.exports = {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            backgroundImage: {
+                'WorldMap': "url('images/world_map.jpg')",
+            },
+            animation: {
+                'worldRotate': 'worldRotate 60s linear infinite',
+            }
+
         },
     },
 
