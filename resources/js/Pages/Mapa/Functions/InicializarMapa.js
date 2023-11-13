@@ -17,22 +17,24 @@ function AdicionaCoordenadasMouse(map, configuracoesLeaflet) {
     let sistema = configuracoesLeaflet.sistema;
     let proj4text = configuracoesLeaflet.proj4text;
     let projCRS = new L.Proj.CRS(crs, proj4text);
+    const style = "background-color: rgba(255, 255, 255, 0.5)";
+    const className = "text-lg p-2";
     let mousePosControl = L.control.mousePosition({
-        position: "bottomright",
-        emptyString: "Coordenadas indisponíveis",
+        position: "bottomleft",
+        emptyString: `<div class="${className}" style="${style}">Coordenadas indisponíveis</div>`,
         formatter: function (lng, lat) {
             let pt = projCRS.project(L.latLng(lat, lng));
             if (sistema == 'utm') {
-                return "" + pt.y.toFixed(0) + " N : " + pt.x.toFixed(0) + " E";
+                return `<div class="${className}" style="${style}">${pt.y.toFixed(0)} N : ${pt.x.toFixed(0)} E</div>`;
             }
-            return "Lat.:" + pt.y.toFixed(5) + " | Lon.:" + pt.x.toFixed(5) + "";
+            return `<div class="${className}" style="${style}">Lat.: ${pt.y.toFixed(5)} | Lon.: ${pt.x.toFixed(5)}</div>`;
         }
     });
     map.addControl(mousePosControl);
     logMessages && console.log("   [CreateMap] Coordenadas do mouse adicionada ao mapa.");
 }
 
-function AdicionaEscala(map, largura=150, posicao="bottomleft") {
+function AdicionaEscala(map, largura=150, posicao="bottomright") {
     let escala = L.control.scale({
         position: posicao,
         metric: true,
@@ -64,12 +66,18 @@ function CriaMenuContexto(map, configuracoesLeaflet) {
     let proj4text = configuracoesLeaflet.proj4text;
     let projCRS = new L.Proj.CRS(crs, proj4text);
     let popup = L.popup();
+    const className = "py-1";
     map.on("contextmenu", (e) => {
+        let dataAtual = new Date();
+        let dataFormatada = `${String(dataAtual.getDate()).padStart(2, '0')}/${String(dataAtual.getMonth() + 1).padStart(2, '0')}/${dataAtual.getFullYear()} ${String(dataAtual.getHours()).padStart(2, '0')}:${String(dataAtual.getMinutes()).padStart(2, '0')}:${String(dataAtual.getSeconds()).padStart(2, '0')}`;
         let coordenada = projCRS.project(L.latLng(e.latlng.lat, e.latlng.lng));
         if (sistema == 'utm') {
             let content = "<b>N</b>: " + coordenada.y.toFixed(0) + "<br><b>E</b>: " + coordenada.x.toFixed(0) + "<br>";
         }
-        let content = "<b>Lat.</b>: " + coordenada.y.toFixed(5) + " <br><b>Lon.</b>: " + coordenada.x.toFixed(5) + "<br>";
+        let content = `<div class="${className}"><b>Lat.</b>: ${coordenada.y.toFixed(5)}</div>
+        <div class="${className}"><b>Lon.</b>: ${coordenada.x.toFixed(5)}</div>
+        <div class="${className} flex"><i class="flex justify-center" style="margin-right: 8px"><img src="icons/calendar-regular.svg" class="inline w-4"/></i>${dataFormatada}</div>`;
+        content = `<div class="mb-3">${content}</div>`;
         popup.setLatLng(e.latlng).setContent(content).openOn(map);
     });
     logMessages && console.log("   [CreateMap] Menu de contexto adicionado ao mapa.");
