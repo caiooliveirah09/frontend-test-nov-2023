@@ -16,8 +16,10 @@ import {
     AdicionaAttribution,
     CriaMenuContexto,
     FuncaoMapaInformacoes,
-    FuncoesZoom 
+    FuncoesZoom
 } from '@/Pages/Mapa/Functions/InicializarMapa.js';
+
+import { ZoomInOut } from '../Functions/Zoom/ZoomInOut';
 
 import { AdicionaBasemapPadrao } from '@/Pages/Mapa/Functions/TileLayers/AdicionaBasemapPadrao.js';
 import { AdicionaOverlaysPadrao } from '@/Pages/Mapa/Functions/TileLayers/AdicionaOverlaysPadrao.js';
@@ -34,10 +36,21 @@ let rasters = props.projeto.rasters;
 
 let map = ref(null);
 
+// Função para dar zoom no mapa quando o usuário clica no botão de zoom
+const zoomIn = () => {
+    window.ZoomInOut('in');
+};
+
+// Função para dar zoom out no mapa quando o usuário clica no botão de zoom
+const zoomOut = () => {
+    window.ZoomInOut('out');
+};
+
+
 onMounted(() => {
     // Objeto com as configurações do Leaflet para criação do objeto map
     let configs = ConfigsLeaflet(configsMapa);
-    
+
     // Cria o objeto map do Leaflet
     map = L.map('map', configs);
 
@@ -52,7 +65,7 @@ onMounted(() => {
 
     // Adiciona a função "MapaInformacoes" para mostrar as informações do mapa
     FuncaoMapaInformacoes(map);
-    
+
     // Adiciona as coordenadas do mouse no canto inferior direito do mapa
     configsMapa.funcionalidades.coordenadasMouse ? AdicionaCoordenadasMouse(map, configsMapa.configuracoesLeaflet) : configsMapa.funcionalidades.coordenadasMouse;
 
@@ -62,9 +75,9 @@ onMounted(() => {
     // Adiciona escala ao mapa caso configsMapa.funcionalidades.escala seja true
     configsMapa.funcionalidades.escala ? AdicionaEscala(map) : configsMapa.funcionalidades.escala;
 
-    // Adiciona atribuições (fonte de dados) ao mapa    
+    // Adiciona atribuições (fonte de dados) ao mapa
     configsMapa.funcionalidades.atribuicoes ? AdicionaAttribution(map, configsMapa.configuracoesLeaflet.atribuicaoPrefixo) : map.attributionControl.remove();
-    
+
     // Desativa o clique do botão direito para evitar menu de contexto do navegador e cria o menu de contexto (clique direito com coordenadas)
     configsMapa.funcionalidades.menuContexto ? CriaMenuContexto(map, configsMapa.configuracoesLeaflet) : configsMapa.funcionalidades.menuContexto;
 
@@ -82,5 +95,18 @@ onMounted(() => {
 </script>
 
 <template>
-    <div id="map" class="z-[5] h-[calc(100vh)] max-h-[calc(100vh)]"></div>
-</template>
+    <div>
+      <!-- Botões de zoom -->
+      <div class="zoom-buttons fixed top-2 z-10 flex flex-col left-2 gap-2">
+        <button @click="zoomIn" class="bg-white opacity-50 w-8 h-8 flex justify-center items-center">
+          +
+        </button>
+        <button @click="zoomOut" class="bg-white opacity-50 w-8 h-8 flex justify-center items-center">
+          -
+        </button>
+      </div>
+
+      <!-- Mapa -->
+      <div id="map" class="z-[5] h-[calc(100vh)] max-h-[calc(100vh)]"></div>
+    </div>
+  </template>
